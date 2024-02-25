@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заголовок страницы</title>
+    <link rel="icon" type="image/jpg" href="0167de939a71912c6247e29cc02b8bf1.jpg"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .deleteButton {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Лаба 1</h1>
+    </header>
+
+    <main>
+        <h2>Добро пожаловать на страницу!</h2>
+        <input type="text" id="newItemInput" placeholder="Введите новый элемент">
+        <button onclick="addElement()">Добавить элемент списка</button>
+        <ul id="myList">
+            <li>Почесать кошку <span class="deleteButton" onclick="removeElement(this)">❌</span></li>
+            <li>Полить картошку <span class="deleteButton" onclick="removeElement(this)">❌</span></li>
+            <li>Собрать в лукошко<span class="deleteButton" onclick="removeElement(this)">❌</span></li>
+        </ul>
+    </main>
+
+    <script>
+        function addElement() {
+            var input = document.getElementById("newItemInput");
+            var text = input.value.trim();
+            if (text !== "") {
+                var list = document.getElementById("myList");
+                var newItem = document.createElement("li");
+                newItem.innerHTML = text + ' <span class="deleteButton" onclick="removeElement(this)">❌</span>';
+                list.appendChild(newItem);
+                input.value = "";
+            }
+        }
+
+        function removeElement(element) {
+            element.parentNode.remove();
+        }
+
+        document.getElementById("newItemInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                addElement();
+            }
+        });
+    </script>
+</body>
+</html>
