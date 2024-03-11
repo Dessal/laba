@@ -1,4 +1,4 @@
-\\задача 1
+задача 1
 function reverseNumber(number) {
   return parseInt(number.toString().split('').reverse().join(''));
 }
@@ -25,7 +25,7 @@ console.log(countDigitOccurrences(1355567, '5'));
 console.log(longestConsecutiveZeroesOrOnesCount(13555670000111)); 
 
 
-\\задача 2
+задача 2
 
 function firstUniqueCharacter(str) {
   const charMap = {};
