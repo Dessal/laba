@@ -1,4 +1,13 @@
-//zadanie 2
+1..
+
+
+let admin, name;
+name = "Джон";
+admin = name;
+alert(admin);
+
+
+2..
 
 
 let a = +prompt("Первое число?", 1); // Используем унарный плюс для преобразования строки в число
@@ -9,7 +18,8 @@ alert(a + b); // Теперь выведет 3
 
 
 
-//zadanie 3
+3..
+
 
 for (let i = 2; i <= 10; i++) {
 
@@ -21,7 +31,9 @@ for (let i = 2; i <= 10; i++) {
 
 }
 
-//zadanie 4
+4..
+
+
 
 let i = 0;
 
@@ -33,7 +45,10 @@ while (i < 3) {
 
 }
 
-//zadanie 5
+
+5..
+
+
 
 let number;
 
@@ -44,7 +59,9 @@ do {
 } while (number <= 100 && number !== null);
 
 
-//zadanie 6
+6..
+
+
 
 let n = 10;
 
