@@ -1,0 +1,59 @@
+\\задача 1
+function reverseNumber(number) {
+  return parseInt(number.toString().split('').reverse().join(''));
+}
+
+function removeDuplicateDigits(number) {
+  return parseInt([...new Set(number.toString().split(''))].join(''));
+}
+
+function countDigitOccurrences(number, digit) {
+  const count = number.toString().split(digit).length - 1;
+  return count;
+}
+
+function longestConsecutiveZeroesOrOnesCount(number) {
+  const binaryString = number.toString(2);
+  const onesAndZeroes = binaryString.match(/1+|0+/g);
+  const longestSequence = Math.max(...onesAndZeroes.map(sequence => sequence.length));
+  return longestSequence;
+}
+
+console.log(reverseNumber(123)); 
+console.log(removeDuplicateDigits(111333456)); 
+console.log(countDigitOccurrences(1355567, '5')); 
+console.log(longestConsecutiveZeroesOrOnesCount(13555670000111)); 
+
+
+\\задача 2
+
+function firstUniqueCharacter(str) {
+  const charMap = {};
+  for (let char of str) {
+    charMap[char] = (charMap[char] || 0) + 1;
+  }
+  for (let char of str) {
+    if (charMap[char] === 1) {
+      return char;
+    }
+  }
+  return null;
+}
+
+function generateRandomString(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomString = '';
+  for (let i = 0; i < length; i++) {
+    randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return randomString;
+}
+
+function uniqueCharacters(str) {
+  const uniqueSet = new Set(str);
+  return [...uniqueSet].join('');
+}
+
+console.log(firstUniqueCharacter('фывфавыапрс')); 
+console.log(generateRandomString(5)); 
+console.log(uniqueCharacters('позволяеткопироватьтекст'));
