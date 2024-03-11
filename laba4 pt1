@@ -1,4 +1,4 @@
-\\задача 1
+задача 1
 
 
 function maxDifference(arr) {
@@ -25,7 +25,7 @@ console.log(getDoneObjects(objects));
 
 
 
-\\задача2
+задача2
 
 
 function elementsGreaterThan(arr, num) {
@@ -42,7 +42,7 @@ console.log(flattenArray([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]));
 
 
 
-\\задача  3 
+задача  3 
 
 function countZeroSumPairs(arr) {
   let tally = {};
