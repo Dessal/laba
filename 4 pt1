@@ -1,0 +1,82 @@
+\\задача 1
+
+
+function maxDifference(arr) {
+  return Math.max(...arr) - Math.min(...arr);
+}
+
+function removeDuplicates(arr) {
+  return Array.from(new Set(arr));
+}
+
+function getDoneObjects(arr) {
+  return arr.filter(obj => obj.idDone);
+}
+
+const objects = [
+  { id: 1, idDone: true },
+  { id: 2, idDone: false },
+  { id: 3, idDone: true }
+];
+
+console.log(maxDifference([1, 6, 3, 8, 10])); 
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); 
+console.log(getDoneObjects(objects));
+
+
+
+\\задача2
+
+
+function elementsGreaterThan(arr, num) {
+  return arr.filter(item => item > num);
+}
+
+function flattenArray(arr) {
+  return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenArray(val)) : acc.concat(val), []);
+}
+
+console.log(elementsGreaterThan([1, 2, 3, 4, 5], 2)); 
+console.log(flattenArray([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]])); 
+
+
+
+
+\\задача  3 
+
+function countZeroSumPairs(arr) {
+  let tally = {};
+  let count = 0;
+  arr.forEach(num => {
+    if (tally[-num]) {
+      count++;
+      tally[-num]--;
+    } else {
+      tally[num] = (tally[num] || 0) + 1;
+    }
+  });
+  return count;
+}
+
+function countZeroSumTriples(arr) {
+  let tally = {};
+  let count = 0;
+  arr.forEach(num1 => {
+    arr.forEach(num2 => {
+      if (num1 !== num2) {
+        let sum = num1 + num2;
+        if (tally[-sum]) {
+          count++;
+        }
+      }
+    });
+    tally[num1] = (tally[num1] || 0) + 1;
+  });
+  return count / 2;
+}
+
+console.log(countZeroSumPairs([-7, 12, 4, 6, -4, -12, 0])); 
+console.log(countZeroSumPairs([-1, 2, 4, 7, -4, 1, -2])); 
+console.log(countZeroSumTriples([-7, 12, 4, 6, -4, -12, 0])); 
+console.log(countZeroSumTriples([-1, 1, -1, 1])); 
+console.log(countZeroSumTriples([1, 1, -2, 0, -1])); 
