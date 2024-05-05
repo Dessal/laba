@@ -1,0 +1,37 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const FormComponent = () => {
+    const [postData, setPostData] = useState(null);
+    const [userData, setUserData] = useState(null);
+    const postId = 1; // ID поста
+    const userId = 1; // ID пользователя
+
+    const fetchData = async () => {
+        try {
+            const postResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+            const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+
+            setPostData(postResponse.data);
+            setUserData(userResponse.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    return (
+        <div>
+            <button onClick={fetchData}>Загрузить данные</button>
+            {postData && userData && (
+                <div>
+                    <h2>{postData.title}</h2>
+                    <p>{postData.body}</p>
+                    <p>Имя: {userData.name}</p>
+                    <p>Email: {userData.email}</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default FormComponent;
