@@ -1,0 +1,24 @@
+class Revert extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: this.props.s };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState((prevState) => ({
+        text: prevState.text.charAt(prevState.text.length - 1) + prevState.text.slice(0, -1)
+      }));
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return <div>{this.state.text}</div>;
+  }
+}
+
+ReactDOM.render(<Revert s="привет!" />, document.getElementById('root'));
