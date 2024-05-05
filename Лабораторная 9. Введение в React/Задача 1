@@ -1,0 +1,13 @@
+import React from 'react';
+import Square from './Square';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Квадрат числа 3:</h1>
+      <Square n={3} />
+    </div>
+  );
+};
+
+export default App;
