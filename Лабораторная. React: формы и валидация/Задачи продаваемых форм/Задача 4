@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Количество прожитых секунд</title>
+</head>
+<body>
+    <label for="birthdate">Введите дату рождения (дд.мм.гггг):</label>
+    <input type="text" id="birthdate">
+    <p id="seconds-lived"></p>
+
+    <script>
+        function calculateSeconds() {
+            const birthdateInput = document.getElementById('birthdate').value;
+            const birthdate = new Date(birthdateInput);
+            const now = new Date();
+            const secondsLived = Math.floor((now - birthdate) / 1000);
+
+            document.getElementById('seconds-lived').innerText = `Вы прожили: ${secondsLived} секунды`;
+        }
+
+        setInterval(calculateSeconds, 1000);
+    </script>
+</body>
+</html>
