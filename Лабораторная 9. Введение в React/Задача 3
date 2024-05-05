@@ -1,0 +1,29 @@
+import React from 'react';
+
+const Temperature = ({ t }) => {
+  const temperatureColor = t < 0 ? 'blue' : 'red';
+
+  return (
+    <p style={{ color: temperatureColor }}>
+      Температура: {t}
+    </p>
+  );
+};
+
+export default Temperature;
+Чтобы использовать этот компонент и отобразить температуру 451 градус по Цельсию с красным цветом текста:
+
+
+import React from 'react';
+import Temperature from './Temperature';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Текущая температура:</h1>
+      <Temperature t={451} />
+    </div>
+  );
+};
+
+export default App;
