@@ -1,0 +1,40 @@
+import React from 'react';
+
+const OnlyEven = ({ arr }) => {
+  const evenNumbers = arr.filter(num => num % 2 === 0);
+
+  return (
+    <div>
+      <p>Чётные элементы массива:</p>
+      <ul>
+        {evenNumbers.map(number => (
+          <li key={number}>{number}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default OnlyEven;
+
+
+
+
+
+
+
+import React from 'react';
+import OnlyEven from './OnlyEven';
+
+const App = () => {
+  const numbers = [14, 5, 6, 12, 21, 2];
+
+  return (
+    <div>
+      <h1>Только чётные элементы массива:</h1>
+      <OnlyEven arr={numbers} />
+    </div>
+  );
+};
+
+export default App;
