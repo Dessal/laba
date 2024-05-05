@@ -1,0 +1,84 @@
+Установить необходимые зависимости:
+
+bash
+Копировать
+npm install react react-dom
+npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react
+2. Создать файлы для настройки Webpack: webpack.config.js и .babelrc
+
+webpack.config.js:
+
+javascript
+Копировать
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    port: 3000,
+  },
+};
+.babelrc:
+
+json
+Копировать
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+3. Создать простой файл index.js с кодом React:
+
+javascript
+Копировать
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => {
+  return <h1>Hello React!</h1>;
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+4. Создать файл index.html в папке dist:
+
+html
+Копировать
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="bundle.js"></script>
+</body>
+
+</html>
+5. Добавить скрипты в package.json для удобства запуска dev-сервера:
+
+json
+Копировать
+{
+  "scripts": {
+    "start": "webpack serve --open"
+  }
+}
