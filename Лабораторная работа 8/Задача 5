@@ -1,0 +1,40 @@
+type Todo = {
+    id: number;
+    title: string;
+    completed: boolean;
+}
+
+type TodoList = {
+    todos: Todo[];
+    addTodo: (title: string) => void;
+    toggleTodo: (id: number) => void;
+    deleteTodo: (id: number) => void;
+}
+
+const todoList: TodoList = {
+    todos: [],
+    addTodo: function(title: string) {
+        const newTodo: Todo = {
+            id: this.todos.length + 1,
+            title,
+            completed: false
+        };
+        this.todos.push(newTodo);
+    },
+    toggleTodo: function(id: number) {
+        this.todos = this.todos.map(todo =>
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        );
+    },
+    deleteTodo: function(id: number) {
+        this.todos = this.todos.filter(todo => todo.id !== id);
+    }
+};
+
+// Пример использования
+todoList.addTodo("Learn TypeScript");
+todoList.addTodo("Practice coding");
+todoList.toggleTodo(1);
+todoList.deleteTodo(2);
+
+console.log(todoList.todos);
