@@ -1,1 +1,27 @@
+import React from 'react';
 
+class CitySelector extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedCity: '' };
+  }
+
+  handleCityChange = (e) => {
+    this.setState({ selectedCity: e.target.value });
+  }
+
+  render() {
+    return (
+      <div>
+        <select value={this.state.selectedCity} onChange={this.handleCityChange}>
+          <option value="">Выберите город</option>
+          <option value="rio">Rio-de-Janeiro</option>
+          <option value="other">Другой город</option>
+        </select>
+        {this.state.selectedCity !== "rio" && <p>Нет, это не Рио-де-Жанейро!</p>}
+      </div>
+    );
+  }
+}
+
+export default CitySelector;
