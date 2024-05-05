@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react';
+
+const PrimeNumbersOutput = () => {
+  const [primeNumbers, setPrimeNumbers] = useState([2]); // Начинаем с первого простого числа - двойки
+  const [currentNumber, setCurrentNumber] = useState(3);
+
+  const isPrime = (num) => {
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return num !== 1;
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (isPrime(currentNumber)) {
+        setPrimeNumbers((prevNumbers) => [...prevNumbers, currentNumber]);
+      }
+      setCurrentNumber((prevNumber) => prevNumber + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [currentNumber]);
+
+  return (
+    <div>
+      <h1>Простые числа:</h1>
+      <ul>
+        {primeNumbers.map((primeNum) => (
+          <li key={primeNum}>{primeNum}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default PrimeNumbersOutput;
+
+
+
+
+
+import React from 'react';
+import PrimeNumbersOutput from './PrimeNumbersOutput';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Поиск простых чисел</h1>
+      <PrimeNumbersOutput />
+    </div>
+  );
+};
+
+export default App;
