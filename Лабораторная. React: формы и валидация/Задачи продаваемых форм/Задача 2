@@ -1,0 +1,62 @@
+import React, { Component } from 'react';
+
+class Calculator extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      num1: 0,
+      num2: 0,
+      operator: '+',
+      result: 0
+    };
+  }
+
+  handleChange = (e, field) => {
+    this.setState({ [field]: +e.target.value });
+  }
+
+  handleOperatorChange = (e) => {
+    this.setState({ operator: e.target.value });
+  }
+
+  calculateResult = () => {
+    const { num1, num2, operator } = this.state;
+    let result = 0;
+    switch (operator) {
+      case '+':
+        result = num1 + num2;
+        break;
+      case '-':
+        result = num1 - num2;
+        break;
+      case '*':
+        result = num1 * num2;
+        break;
+      case '/':
+        result = num1 / num2;
+        break;
+      default:
+        result = num1 + num2;
+    }
+    this.setState({ result });
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="number" value={this.state.num1} onChange={(e) => this.handleChange(e, 'num1')} />
+        <select value={this.state.operator} onChange={this.handleOperatorChange}>
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <input type="number" value={this.state.num2} onChange={(e) => this.handleChange(e, 'num2')} />
+        <button onClick={this.calculateResult}>=</button>
+        <p>{this.state.num1} {this.state.operator} {this.state.num2} = {this.state.result}</p>
+      </div>
+    );
+  }
+}
+
+export default Calculator;
