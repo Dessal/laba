@@ -1,0 +1,38 @@
+import React, { useState, useEffect } from 'react';
+
+const CountdownTimer = () => {
+  const [count, setCount] = useState(10);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (count > 0) {
+        setCount(prevCount => prevCount - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [count]);
+
+  return (
+    <div>
+      <h1>Обратный таймер: {count}</h1>
+    </div>
+  );
+};
+
+export default CountdownTimer;
+
+
+import React from 'react';
+import CountdownTimer from './CountdownTimer';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Обратный таймер</h1>
+      <CountdownTimer />
+    </div>
+  );
+};
+
+export default App;
