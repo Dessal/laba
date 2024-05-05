@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+
+const NumberFilter = () => {
+  const [numbers, setNumbers] = useState([]);
+  const [filter, setFilter] = useState('All');
+
+  const addNumber = () => {
+    setNumbers([...numbers, 0]);
+  };
+
+  const updateNumber = (index, newValue) => {
+    const updatedNumbers = numbers.map((num, i) => (i === index ? newValue : num));
+    setNumbers(updatedNumbers);
+  };
+
+  const filterNumbers = () => {
+    let filteredNumbers = numbers;
+    if (filter === 'Even') {
+      filteredNumbers = numbers.filter(num => num % 2 === 0);
+    } else if (filter === 'Odd') {
+      filteredNumbers = numbers.filter(num => num % 2 !== 0);
+    }
+    return filteredNumbers.map((num, index) => (
+      <div key={index}>
+        <input
+          type="number"
+          value={num}
+          onChange={(e) => updateNumber(index, parseInt(e.target.value))}
+        />
+      </div>
+    ));
+  };
+
+  return (
+    <div>
+      <button onClick={addNumber}>+</button>
+      <select onChange={(e) => setFilter(e.target.value)}>
+        <option value="All">All</option>
+        <option value="Even">Even</option>
+        <option value="Odd">Odd</option>
+      </select>
+      {filterNumbers()}
+    </div>
+  );
+};
+
+export default NumberFilter;
