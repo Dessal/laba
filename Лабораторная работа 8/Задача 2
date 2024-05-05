@@ -1,0 +1,45 @@
+Для того чтобы "собрать" типы «Учитель» и «Директор» из типа «Student», следует дополнить описания этих типов данными в соответствии с вашими требованиями.
+type TeacherCourse = Course & WithTeacherRole
+type Teacher = User & { courses: { [id: number]: TeacherCourse } }
+
+type DirectorStudents = { [id: string]: { id: string; name: string } }
+type DirectorTeachers = { [id: string]: User & WithLevel & WithRate }
+type Director = User & { students: DirectorStudents, teachers: DirectorTeachers }
+
+
+
+
+В результате получаем следующие определения типов. Теперь мы можем использовать их для создания переменных t1 и d1:
+
+typescript
+Копировать
+const t1: Teacher = {
+    id: "t1",
+    name: "t1",
+    courses: {
+        [1]: {
+            id: 1,
+            title: "Math",
+            role: "teacher"
+        }
+    }
+}
+
+const d1: Director = {
+    id: "d1",
+    name: "d1",
+    students: {
+        "s1": {
+            id: "s1",
+            name: "Student 1"
+        }
+    },
+    teachers: {
+        "t1": {
+            id: "t1",
+            name: "Teacher 1",
+            level: "senior",
+            rate: 5
+        }
+    }
+}
