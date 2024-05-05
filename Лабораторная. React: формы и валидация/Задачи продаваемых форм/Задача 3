@@ -1,0 +1,47 @@
+import React, { Component } from 'react';
+
+class NumberConverter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputNumber: '',
+      outputNumber: '',
+      inputBase: 10,
+      outputBase: 2
+    };
+  }
+
+  handleChange = (e, field) => {
+    this.setState({ [field]: e.target.value });
+  }
+
+  convertNumber = () => {
+    const { inputNumber, inputBase, outputBase } = this.state;
+    const parsedInputNumber = parseInt(inputNumber, inputBase);
+    const convertedOutputNumber = parsedInputNumber.toString(outputBase);
+    this.setState({ outputNumber: convertedOutputNumber });
+  }
+
+  render() {
+    return (
+      <div>
+        <label>
+          Введите число:
+          <input type="text" value={this.state.inputNumber} onChange={(e) => this.handleChange(e, 'inputNumber')} />
+        </label>
+        <label>
+          Система исходного числа:
+          <input type="number" value={this.state.inputBase} onChange={(e) => this.handleChange(e, 'inputBase')} />
+        </label>
+        <label>
+          Система расчета:
+          <input type="number" value={this.state.outputBase} onChange={(e) => this.handleChange(e, 'outputBase')} />
+        </label>
+        <button onClick={this.convertNumber}>Вычислить</button>
+        <p>Результат: {this.state.outputNumber}</p>
+      </div>
+    );
+  }
+}
+
+export default NumberConverter;
