@@ -1,15 +1,15 @@
 Установить необходимые зависимости:
 
 bash
-Копировать
+
 npm install react react-dom
 npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react
 2. Создать файлы для настройки Webpack: webpack.config.js и .babelrc
 
 webpack.config.js:
 
-javascript
-Копировать
+
+
 const path = require('path');
 
 module.exports = {
@@ -36,15 +36,13 @@ module.exports = {
 };
 .babelrc:
 
-json
-Копировать
+
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 3. Создать простой файл index.js с кодом React:
 
-javascript
-Копировать
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -55,8 +53,7 @@ const App = () => {
 ReactDOM.render(<App />, document.getElementById('root'));
 4. Создать файл index.html в папке dist:
 
-html
-Копировать
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,8 +72,7 @@ html
 </html>
 5. Добавить скрипты в package.json для удобства запуска dev-сервера:
 
-json
-Копировать
+
 {
   "scripts": {
     "start": "webpack serve --open"
