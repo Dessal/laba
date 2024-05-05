@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Форма регистрации</title>
+<style>
+.error {
+  color: red;
+}
+</style>
+</head>
+<body>
+<h1>Форма регистрации</h1>
+<form id="registrationForm">
+  <label for="login">Логин:</label><br>
+  <input type="text" id="login" name="login"><br>
+  <span id="loginError" class="error"></span><br>
+  
+  <label for="password">Пароль:</label><br>
+  <input type="password" id="password" name="password"><br>
+  <span id="passwordError" class="error"></span><br>
+  
+  <label for="confirmPassword">Подтверждение пароля:</label><br>
+  <input type="password" id="confirmPassword" name="confirmPassword"><br>
+  <span id="confirmPasswordError" class="error"></span><br>
+  
+  <button type="submit">Зарегистрироваться</button>
+</form>
+
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const login = document.getElementById('login').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  
+  const loginError = document.getElementById('loginError');
+  const passwordError = document.getElementById('passwordError');
+  const confirmPasswordError = document.getElementById('confirmPasswordError');
+  
+  const loginRegex = /^[a-zA-Z0-9]{6,20}$/;
+  
+  if (!login || !login.match(loginRegex)) {
+    loginError.textContent = 'Логин должен содержать от 6 до 20 символов и состоять из букв латинского алфавита и цифр.';
+  } else {
+    loginError.textContent = '';
+  }
+  
+  if (!password) {
+    passwordError.textContent = 'Пароль обязателен для заполнения.';
+  } else {
+    passwordError.textContent = '';
+  }
+  
+  if (password !== confirmPassword) {
+    confirmPasswordError.textContent = 'Введенные пароли не совпадают.';
+  } else {
+    confirmPasswordError.textContent = '';
+  }
+});
+</script>
+</body>
+</html>
