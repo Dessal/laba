@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Форма редактирования профиля</title>
+<style>
+.error {
+  color: red;
+}
+</style>
+</head>
+<body>
+<h1>Форма редактирования профиля</h1>
+<form id="profileForm">
+  <label for="firstName">Имя:</label><br>
+  <input type="text" id="firstName" name="firstName"><br>
+  <span id="firstNameError" class="error"></span><br>
+  
+  <label for="middleName">Отчество:</label><br>
+  <input type="text" id="middleName" name="middleName"><br>
+  <span id="middleNameError" class="error"></span><br>
+  
+  <label for="lastName">Фамилия:</label><br>
+  <input type="text" id="lastName" name="lastName"><br>
+  <span id="lastNameError" class="error"></span><br>
+  
+  <label for="dob">Дата рождения (ДД.ММ.ГГГГ):</label><br>
+  <input type="text" id="dob" name="dob"><br>
+  <span id="dobError" class="error"></span><br>
+  
+  <label for="address">Адрес:</label><br>
+  <input type="text" id="address" name="address"><br>
+  <span id="addressError" class="error"></span><br>
+  
+  <button type="submit">Сохранить изменения</button>
+</form>
+
+<script>
+document.getElementById('profileForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const firstName = document.getElementById('firstName').value;
+  const middleName = document.getElementById('middleName').value;
+  const lastName = document.getElementById('lastName').value;
+  const dob = document.getElementById('dob').value;
+  
+  const firstNameError = document.getElementById('firstNameError');
+  const middleNameError = document.getElementById('middleNameError');
+  const lastNameError = document.getElementById('lastNameError');
+  const dobError = document.getElementById('dobError');
+  
+  if (!firstName) {
+    firstNameError.textContent = 'Имя обязательно для заполнения.';
+  } else {
+    firstNameError.textContent = '';
+  }
+  
+  if (!middleName) {
+    middleNameError.textContent = 'Отчество обязательно для заполнения.';
+  } else {
+    middleNameError.textContent = '';
+  }
+  
+  if (!lastName) {
+    lastNameError.textContent = 'Фамилия обязательна для заполнения.';
+  } else {
+    lastNameError.textContent = '';
+  }
+  
+  const dobRegex = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/;
+  if (dob && !dob.match(dobRegex)) {
+    dobError.textContent = 'Дата рождения должна быть в формате ДД.ММ.ГГГГ.';
+  } else {
+    dobError.textContent = '';
+  }
+});
+</script>
+
+</body>
+</html>
