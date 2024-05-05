@@ -1,0 +1,32 @@
+type Teacher = Pick<User, "id" | "name">;
+
+type Director = {
+    id: string;
+    name: string;
+    students?: { [id: string]: Student };
+    teachers: { [id: string]: Teacher & { rate: Rate, level?: Level } };
+}
+
+/*--  Проверка  --*/
+const t1: Teacher = {
+    id: "t1",
+    name: "t1",
+}
+
+const d1: Director = {
+    id: "d1",
+    name: "d1",
+    teachers: {
+        ["t1"]: {
+            id: "t1",
+            name: "t1",
+            rate: 3,
+        },
+        ["t2"]: {
+            id: "t2",
+            name: "t2",
+            rate: 5,
+            level: "senior"
+        }
+    }
+}
