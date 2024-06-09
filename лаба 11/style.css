@@ -1,0 +1,94 @@
+body {
+  background-color: #122221;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.app-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+header {
+  color: #EAD2CE;
+  font-size: 36pt;
+  text-align: center;
+}
+
+mainPart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  margin: auto;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin-top: 20px;
+}
+
+.inputText {
+  background-color: #EAD2CE;
+  color: #125446;
+  font-size: 20pt;
+  width: 60%;
+}
+
+.addButton,
+.clearButton {
+  cursor: pointer;
+  background-color: #125446;
+  color: #EAD2CE;
+  font-size: 20pt;
+  width: 20%;
+}
+.addButton:hover,
+.clearButton:hover {
+  background-color: #3B877A;
+  color: #122221;
+}
+.hiddenText {
+  color: #EAD2CE;
+  font-size: 27pt;
+}
+.uList {
+  background-color: #3B877A;
+  color: #122221;
+  width: 60%;
+  height: 60%;
+  overflow-y: auto;
+  padding: 10px;
+}
+.list-container {
+  list-style-type: none;
+  padding: 0;
+}
+.list-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #125446;
+}
+.list-container li:last-child {
+  border-bottom: none;
+}
+.list-container li:hover {
+  background: #125446;
+  color: #EAD2CE;
+}
+
+.list-container li button {
+  background-color: #125446;
+  color: #EAD2CE;
+  font-size: 30pt;
+  width: 60px;
+  height: 60px;
+  border: none;
+}
+.list-container li button:hover {
+  background-color: #DB8C7B;
+}
